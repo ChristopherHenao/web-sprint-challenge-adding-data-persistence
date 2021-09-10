@@ -23,6 +23,7 @@ exports.up = async function(knex) {
         table.increments('task_id')
         table.string('task_description', 300)
             .notNullable()
+        table.string('task_notes', 200)
         table.boolean('task_completed')
             .defaultTo(false)
         table.integer('project_id')
