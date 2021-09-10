@@ -14,6 +14,7 @@ exports.up = async function(knex) {
         table.string('resource_name', 200)
             .notNullable()
             .unique()
+        table.string('unit')
     })
 
     .createTable('tasks', table => {
@@ -41,12 +42,14 @@ exports.up = async function(knex) {
             .onUpdate('CASCADE')
             .onDelete('CASCADE')
         table.integer('resource_id')
-        .unsigned()
-        .notNullable()
-        .references('resource_id')
-        .inTable('resources')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE')
+            .unsigned()
+            .notNullable()
+            .references('resource_id')
+            .inTable('resources')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE')
+        table.integer('quantity')
+            .notNullable()
     })
 };
 
