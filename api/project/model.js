@@ -23,11 +23,11 @@ async function getProjectById (project_id) {
         .first()
 }
 
-async function insertProject(project) {
+async function insertProject (project) {
     const [project_id] = await db('projects')
         .insert(project)
 
-    const newProject = await getProjectById(project_id)
+    const newProject = await getProjectById (project_id)
 
     const result = {
         project_id: newProject.project_id,

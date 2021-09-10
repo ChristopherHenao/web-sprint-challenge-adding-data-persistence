@@ -15,6 +15,7 @@ exports.up = async function(knex) {
         table.string('resource_name', 200)
             .notNullable()
             .unique()
+        table.string('resource_description', 200)
         table.string('unit')
     })
 
