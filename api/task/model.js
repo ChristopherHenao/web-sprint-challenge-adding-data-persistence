@@ -1,10 +1,5 @@
 const db = require('../../data/dbConfig')
 
-async function getProject (project_id) {
-    return db('projects')
-        .where('project_id', project_id)
-}
-
 async function getTasks () {
     const data = await db('tasks as t')
         .join('projects as p', 't.project_id', 'p.project_id')
