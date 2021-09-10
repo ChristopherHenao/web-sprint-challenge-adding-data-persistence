@@ -14,8 +14,14 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', (req, res, next) => {
-    res.json('post tasks is working')
+router.post('/', async (req, res, next) => {
+    try {
+        const newTask = await Tasks.insertTask(req.body)
+        res.json(newTask)
+    }
+    catch (error) {
+        next(error)
+    }
 })
 
 module.exports = router
