@@ -14,8 +14,14 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', (req, res, next) => {
-    res.json('post projects is working')
+router.post('/', async (req, res, next) => {
+    try {
+        const newProject = await Projects.insertProject(req.body)
+        res.json(newProject)
+    }
+    catch (error) {
+        next(error)
+    }
 })
 
 module.exports = router
